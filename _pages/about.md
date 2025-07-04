@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Mediumish Template for Jekyll
+title: Évora Leite Portifolio
 permalink: /about
 comments: true
 ---
