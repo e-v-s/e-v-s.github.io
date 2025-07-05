@@ -3,9 +3,9 @@ layout: post
 title:  "Script básico de automação de busca no Virus Total"
 author: Evs
 categories: [ Virus Total, automação, python]
-# image: assets/images/figura4.png
+image: assets/images/post2.png
 featured: true
-hidden: true
+excerpt: "Desenvolvimento de script Python para automatizar consultas na API do VirusTotal e otimizar workflows de CTI."
 ---
 
 Após minhas aventuras pela CTI e suas ferramentas, descobri que o Virus Total possui uma API e que eu poderia usá-la para automaizar minhas buscas e torná-las mais rápidas e fáceis. Bem, ao final a busca realmente se tornou mais rápida e fácil, mas desenvolver a solução não foi tão fácil assim.
