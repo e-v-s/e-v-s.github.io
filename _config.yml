@@ -2,7 +2,7 @@
 name: "Évora Leite"
 title: "Evs"
 description: "Jr. Cybersec Analyst | CIT | Blue Team | Computer Network"
-baseurl: "/portfolio"
+baseurl: /portfolio
 include: ["_pages"]
 permalink: /:title/
 
