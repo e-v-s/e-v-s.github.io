@@ -3,11 +3,36 @@
   <channel>
     <title>Evs</title>
     <description>Jr. Cybersec Analyst | CIT | Blue Team | Computer Network</description>
-    <link>http://localhost:4000/portfolio/</link>
-    <atom:link href="http://localhost:4000/portfolio/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 05 Jul 2025 14:22:36 +0200</pubDate>
-    <lastBuildDate>Sat, 05 Jul 2025 14:22:36 +0200</lastBuildDate>
-    <generator>Jekyll v4.4.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sun, 06 Jul 2025 00:15:04 +0200</pubDate>
+    <lastBuildDate>Sun, 06 Jul 2025 00:15:04 +0200</lastBuildDate>
+    <generator>Jekyll v4.3.4</generator>
+    
+      <item>
+        <title>Script básico de automação de busca no Virus Total</title>
+        <description>&lt;p&gt;Após minhas aventuras pela CTI e suas ferramentas, descobri que o Virus Total possui uma API e que eu poderia usá-la para automaizar minhas buscas e torná-las mais rápidas e fáceis. Bem, ao final a busca realmente se tornou mais rápida e fácil, mas desenvolver a solução não foi tão fácil assim.&lt;/p&gt;
+
+&lt;p&gt;Como já adiantei, resolvi desenvolver um script para automatizar minhas buscas no &lt;strong&gt;Virus Total&lt;/strong&gt;. Primeiramente pensei em usar &lt;em&gt;bash&lt;/em&gt;, mas como tive pouco contato cheguei à conclusão que talvez eu fosse complicar (sem necessidade) um problema fácil de solucionar. Depois, fiquei entre usar &lt;em&gt;JavaScript&lt;/em&gt;, o qual usei por alguns anos como desenvolvedora front-end, e &lt;em&gt;Python&lt;/em&gt;, o qual usei bastante em um mestrado em Ciências da Computação que nem cheguei a terminar.&lt;/p&gt;
+
+&lt;p&gt;Acabei decidindo em usar &lt;em&gt;Python&lt;/em&gt;, pois acho uma linguagem “acessível” e organizada, além de ser um pouco mais &lt;em&gt;user friendly&lt;/em&gt;. A verdade é que estou enferrujadíssima na programação e eu queria uma solução rápida, já que meu foco não é programar e sim usar a programação como uma ferramenta a mais (não uma complicação a mais).&lt;/p&gt;
+
+&lt;p&gt;Aqui contarei um pouco da minha saga com esse processo de &lt;em&gt;reconexão&lt;/em&gt; com a programação e os conhecimentos que (re)adquiri.&lt;/p&gt;
+
+&lt;p&gt;Meu racicínio foi primeiro buscar quais resultador a API traria numa consulta de IP.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 05 Jul 2025 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/Virustotal-script/</link>
+        <guid isPermaLink="true">http://localhost:4000/Virustotal-script/</guid>
+        
+        
+        <category>Virus Total</category>
+        
+        <category>automação</category>
+        
+        <category>python</category>
+        
+      </item>
     
       <item>
         <title>CIT aplicada à análise de phishing corporativo - Parte 1</title>
@@ -87,8 +112,8 @@ de &lt;em&gt;phishing&lt;/em&gt; resultantes da análise do design do e-mail e
 
 </description>
         <pubDate>Fri, 04 Jul 2025 00:00:00 +0200</pubDate>
-        <link>http://localhost:4000/portfolio/CTI-report-1/</link>
-        <guid isPermaLink="true">http://localhost:4000/portfolio/CTI-report-1/</guid>
+        <link>http://localhost:4000/CTI-report-1/</link>
+        <guid isPermaLink="true">http://localhost:4000/CTI-report-1/</guid>
         
         
         <category>Report</category>

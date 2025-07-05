@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://localhost:4000/portfolio/CTI-report-1/</loc>
+<loc>http://localhost:4000/CTI-report-1/</loc>
 <lastmod>2025-07-04T00:00:00+02:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/portfolio/about</loc>
+<loc>http://localhost:4000/Virustotal-script/</loc>
+<lastmod>2025-07-05T00:00:00+02:00</lastmod>
 </url>
 <url>
-<loc>http://localhost:4000/portfolio/categories</loc>
+<loc>http://localhost:4000/about</loc>
 </url>
 <url>
-<loc>http://localhost:4000/portfolio/</loc>
+<loc>http://localhost:4000/categories</loc>
 </url>
 <url>
-<loc>http://localhost:4000/portfolio/tags</loc>
+<loc>http://localhost:4000/</loc>
 </url>
 <url>
-<loc>http://localhost:4000/portfolio/category/report/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/portfolio/category/cit/</loc>
-</url>
-<url>
-<loc>http://localhost:4000/portfolio/category/phishing/</loc>
+<loc>http://localhost:4000/tags</loc>
 </url>
 </urlset>
