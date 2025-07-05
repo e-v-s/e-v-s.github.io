@@ -3,6 +3,7 @@ name: "Évora Leite"
 title: "Évora Leite"
 description: "Jr. Cybersec Analyst | CIT | Blue Team | Computer Network"
 baseurl: /portfolio
+url: https://e-v-s.github.io
 include: ["_pages"]
 permalink: /:title/
 
@@ -11,7 +12,6 @@ authors:
   Evs:
     name: Evs
     display_name: Evs
-    gravatar: e56154546cf4be74e393c62d1ae9f9d4
     email: evoraleite@gmail.com
     description: "Cybersec analyst"
   
