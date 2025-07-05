@@ -1,6 +1,5 @@
 ---
 layout: page
-title: Évora Leite Portfolio
 permalink: /about
 comments: true
 ---
