@@ -305,8 +305,11 @@ span.post-read-more a:hover {
 }
 
 .mainheading h1.sitetitle, .mainheading h1.sitetitle a {
-    color: #ff6699 !important;
     font-family: Righteous;
+}
+
+.mainheading h1.sitetitle a:hover {
+    color: #ff6699 !important;
 }
 
 .mainheading h1.posttitle {
