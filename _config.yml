@@ -17,6 +17,7 @@ authors:
     display_name: Evs
     email: evoraleite@gmail.com
     description: "Cybersec analyst"
+    avatar: assets/images/evs-avatar.png
   
 # Plugins
 plugins:
