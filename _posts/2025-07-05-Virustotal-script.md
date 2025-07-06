@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Script básico de automação de busca no Virus Total"
+title:  "Script básico de automação de busca de IP no Virus Total"
 author: Evs
 categories: [ Virus Total, automação, python]
 image: assets/images/post2.png
