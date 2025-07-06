@@ -48,6 +48,10 @@ Continuei com problemas na busca do WHOIS, a função async não foi suficiente,
 
 ## Resultados
 
+### Script
+
+Aqui o script: [https://github.com/e-v-s/VT-script](https://github.com/e-v-s/VT-script)
+
 ### Resultado da primeira consulta - sem WHOIS :(
 
 ```
