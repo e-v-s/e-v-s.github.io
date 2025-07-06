@@ -6,7 +6,7 @@ categories: [ Virus Total, automação, python]
 image: assets/images/post2.png
 featured: true
 hidden: true
-excerpt: "Desenvolvimento de script Python para automatizar consultas na API do VirusTotal e otimizar workflows de CTI."
+excerpt: "Desenvolvimento de script em Python para automatizar consultas na API do VirusTotal e otimizar workflows de CTI."
 ---
 
 ## Intro
