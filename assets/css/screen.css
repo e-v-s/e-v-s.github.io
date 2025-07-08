@@ -920,3 +920,19 @@ iframe {
     opacity: 0;
     transition: opacity .25s;
 }
+
+/* Image sizing for blog posts */
+.article-post img[src*="figura1"],
+.article-post img[src*="figura2"],
+.article-post img[src*="figura4"] {
+  width: 200px !important;
+  height: auto;
+}
+
+.article-post img[src*="figura3"],
+.article-post img[src*="figura5"],
+.article-post img[src*="figura6"],
+.article-post img[src*="figura7"] {
+  width: 600px !important;
+  height: auto;
+}
