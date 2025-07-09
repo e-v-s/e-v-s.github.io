@@ -5,21 +5,534 @@
     <description>Jr. Cybersec Analyst | CIT | Blue Team | Computer Network</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 06 Jul 2025 00:15:04 +0200</pubDate>
-    <lastBuildDate>Sun, 06 Jul 2025 00:15:04 +0200</lastBuildDate>
+    <pubDate>Thu, 10 Jul 2025 01:00:22 +0200</pubDate>
+    <lastBuildDate>Thu, 10 Jul 2025 01:00:22 +0200</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
-        <title>Script básico de automação de busca no Virus Total</title>
-        <description>&lt;p&gt;Após minhas aventuras pela CTI e suas ferramentas, descobri que o Virus Total possui uma API e que eu poderia usá-la para automaizar minhas buscas e torná-las mais rápidas e fáceis. Bem, ao final a busca realmente se tornou mais rápida e fácil, mas desenvolver a solução não foi tão fácil assim.&lt;/p&gt;
+        <title>CIT aplicada à análise de phishing corporativo - Parte 2</title>
+        <description>&lt;h1 id=&quot;4-análise-dos-emails&quot;&gt;4 Análise dos Emails&lt;/h1&gt;
+
+&lt;h2 id=&quot;41-pretextos&quot;&gt;4.1 Pretextos&lt;/h2&gt;
+
+&lt;p&gt;Os atacantes usaram técnicas psicológicas de engenharia social como &lt;strong&gt;urgência&lt;/strong&gt;, ao tratar de assuntos sensíveis como acesso indevido e inativação de conta, e &lt;strong&gt;autoridade&lt;/strong&gt; ao se direcionar ao alvo como RH (primeira tentativa de phishing, março-2025 Figura 1), e como o suporte da própria plataforma de email da empresa (segunda tentativa, junho-2025, Figura 2).&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+		&lt;img src=&quot;/assets/images/figura1.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura1.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 1: Pretexto do primeiro email&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura2.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura2.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 2: Pretexto do segundo email&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;42-páginas-clonadas&quot;&gt;4.2 Páginas Clonadas&lt;/h2&gt;
+
+&lt;p&gt;Neste tópico veremos as páginas clonadas do &lt;strong&gt;primeiro&lt;/strong&gt; e do &lt;strong&gt;segundo&lt;/strong&gt; ataque, em contraste com a &lt;strong&gt;página oficial&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Na &lt;strong&gt;página oficial&lt;/strong&gt;, logo abaixo, podemos notar que a URL está correta e o site usa https.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura3.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura3.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 3: Página original&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;No &lt;strong&gt;primeiro&lt;/strong&gt; clone, nota-se uma URL completamente diferente da original, e o email do usuário já está populado. Os idiomas abaixo também estão mal escritos. No &lt;strong&gt;segundo&lt;/strong&gt; clone, o atacante usou um provedor de sites web, nota-se o mesmo problema na apresentação dos idiomas, além das caixas de input não parecerem profissionais.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura4.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura4.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 4: Primeiro clone&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura5.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura5.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 5: Segundo clone&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;43-objetivo-do-atacante&quot;&gt;4.3 Objetivo do Atacante&lt;/h2&gt;
+
+&lt;p&gt;Com base no clone das páginas de login e na análise feita com o software BurpSuite, o phishing tinha como objetivo coletar as credenciais do alvo. O spoofing do email e seu uso como remetente facilita a exposição de credenciais e possível vazamento de dados em cadeia, comprometendo tanto a privacidade do alvo, quanto a dos clientes para os quais o alvo fornece serviços.&lt;/p&gt;
+
+&lt;p&gt;Na Figura 7, observa-se que, ao clicar no botão Log in, as credenciais são enviadas em um request do tipo POST para um servidor malicioso, também identificado na imagem. Detalhe que as informações são enviadas em &lt;em&gt;plaintext&lt;/em&gt;, ou seja, completamente sem criptografia.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura6.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura6.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 6: Exemplo de inserção de credenciais.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&amp;lt;img src=&quot;/assets/images/figura7.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura7.png&quot; width=&quot;200&quot;&amp;gt;
+&amp;lt;p&amp;gt;Figura 7: Resquest POST.&amp;lt;/p&amp;gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;5-análise-do-source-code---primeira-tentativa-de-phishing&quot;&gt;5. Análise do &lt;em&gt;Source Code&lt;/em&gt; - Primeira Tentativa de Phishing&lt;/h1&gt;
+
+&lt;p&gt;Aqui será analisado o &lt;em&gt;source code&lt;/em&gt; da primeira tentativa de phishing, onde será feita uma análise mais aprofundada das partes relevantes do header.&lt;/p&gt;
+
+&lt;h2 id=&quot;51-cadeia-de-recebimento---received-chain&quot;&gt;5.1 Cadeia de Recebimento - &lt;em&gt;Received Chain&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;A cadeia de recebimento (&lt;em&gt;received chain&lt;/em&gt;) é formada pelos servidores que manipularam o e-mail, incluindo o servidor do destinatário. Podemos fazer um rastreamento percorrendo o source code do e-mail na direção &lt;em&gt;top -&amp;gt; bottom&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;No &lt;em&gt;top&lt;/em&gt; está a conexão mais recente (geralmente o servidor do destinatário), enquanto que no &lt;em&gt;bottom&lt;/em&gt; está a conexão mais antiga, ou seja, a do servidor que originou a comunicação.&lt;/p&gt;
+
+&lt;p&gt;A importância destes elementos reside no fato de que todos os endereços de IP dos servidores estão no &lt;em&gt;source code&lt;/em&gt;, o que nos permite analisar o caminho feito pelo e-mail. Porém, isso nos dará apenas uma ideia do que
+pode ter ocorrido, já que os IPs não são uma fonte confiável de &lt;em&gt;intel&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;No &lt;strong&gt;primeiro bloco&lt;/strong&gt; do email temos o último ponto de contato (servidor mais recente): &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cpanel-003-fra.hostingww.com&lt;/code&gt;, usando o protocolo LMTP. Este contato é o servidor do provedor de email do cliente.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  X-Mozilla-Status: 0001
+  X-Mozilla-Status2: 00000000
+  Return-Path: &amp;lt;hr@corridorconstructioniowa.cam&amp;gt;
+  Delivered-To: ceo@msolutions.com
+  Received: from cpanel-003-fra.hostingww.com
+    by cpanel-003-fra.hostingww.com with LMTP
+    id EGKZEk+WC2jNvzYA2p0M4Q
+    (envelope-from &amp;lt;hr@corridorconstructioniowa.cam&amp;gt;)
+    for &amp;lt;ceo@msolutions.com&amp;gt;; Fri, 25 Apr 2025 14:03:59 +0000
+  Return-path: &amp;lt;hr@corridorconstructioniowa.cam&amp;gt;
+  Envelope-to: ceo@msolutions.com
+  Delivery-date: Fri, 25 Apr 2025 14:03:59 +0000
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;No &lt;strong&gt;segundo bloco&lt;/strong&gt; temos outro servidor, de IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;148.113.172.133&lt;/code&gt; e URL &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vps-58680c2d.vps.ovh.ca&lt;/code&gt;. Neste bloco o servidor de envio &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vps-58680c2d.vps.ovh.ca&lt;/code&gt; se anuncia ao servidor de recebimento usando o
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helo=mail.corridorconstructioniowa.cam&lt;/code&gt;, e o servidor do cliente aceita receber o email. O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;helo&lt;/code&gt; funcionaria como um “handshake” e é uma parte essencial no protocolo SMTP, já que ele verifica a saúde dos servidores.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div style=&quot;font-family: &apos;Courier New&apos;;&quot;&gt;
+  &lt;p&gt;&lt;mark style=&quot;background-color: rgb(211, 228, 59);&quot;&gt;Received: from vps-58680c2d.vps.ovh.ca ([148.113.172.133]:46792 helo=mail.corridorconstructioniowa.cam)&lt;/mark&gt;&lt;br /&gt;
+    by cpanel-003-fra.hostingww.com with esmtps  (TLS1.3) tls TLS_AES_256_GCM_SHA384&lt;br /&gt;
+    (Exim 4.98)&lt;br /&gt;
+    (envelope-from &lt;a href=&quot;mailto:hr@corridorconstructioniowa.cam&quot;&gt;hr@corridorconstructioniowa.cam&lt;/a&gt;)&lt;br /&gt;
+    id 1u8Jep-0000000FOHA-1KmS&lt;br /&gt;
+    for ceo@msolutions.com;&lt;br /&gt;
+    Fri, 25 Apr 2025 14:03:59 +0000&lt;br /&gt;
+  DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;&lt;br /&gt;
+    d=corridorconstructioniowa.cam; s=202502; t=1745589723;&lt;br /&gt;
+    bh=27SJj8BZJ8l+ac4w7EED3uS3UQaeMwpWWY+B6MYbbRw=;&lt;br /&gt;
+    h=Reply-To:From:To:Subject:Date:From;&lt;br /&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Neste caso, a ferramenta &lt;strong&gt;Virus Total&lt;/strong&gt; não sinalizou o domínio nem o IP, porém a ferramenta retorna um achado importante relacionado ao IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;148.113.172.133&lt;/code&gt;:&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;div style=&quot;font-family: &apos;Courier New&apos;;&quot;&gt;
+  &lt;p&gt;Last HTTPS Certificate&lt;/p&gt;
+
+  &lt;p&gt;Version: V3
+  Serial Number: 44b7fa66fb131cc97692a8cf0eb4bfe7ef3&lt;br /&gt;
+  Thumbprint: b3c9900fa0b35cfb1e3dede8df0a24496a1de2ab&lt;br /&gt;
+  Signature Algorithm: &lt;br /&gt;
+  Issuer: C=US O=Let’s Encrypt CN=E5 &lt;br /&gt;
+  Validity &lt;br /&gt;
+  Not Before: 2024-06-12 11:21:39&lt;br /&gt;
+  Not After: 2024-09-10 11:21:38&lt;br /&gt;
+  &lt;mark style=&quot;background-color: rgb(211, 228, 59);&quot;&gt;Subject: CN=referidos.packsporno.com&lt;/mark&gt;&lt;br /&gt;
+  …
+  Authority Information Access:&lt;/p&gt;
+
+  &lt;p&gt;OCSP - http://e5.o.lencr.org&lt;br /&gt;
+  CA Issuers - http://e5.i.lencr.org/&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;Aqui temos três pontos interessantes:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;O CN está associado a um site duvidoso;&lt;/li&gt;
+  &lt;li&gt;As autoridades certificadoras não são confiáveis;&lt;/li&gt;
+  &lt;li&gt;O certificado está vencido.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Além disso, o email passou por outro país antes de chegar no servidor final, o WHOIS indica que o hosting está sendo feito no Canadá.&lt;/p&gt;
+
+&lt;p&gt;Outro achado é que o subdomínio que aparece no CN não retorna nenhuma flag maliciosa na inspeção com o &lt;em&gt;Virus Total&lt;/em&gt;, porém se fizermos uma busca pelo domínio, teremos algumas flags associadas aos IPs reconhecidos pelo pDNS (passive DNS, que é uma gravação histórica das resoluções DNS do domínio).&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura8.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura8.png&quot; width=&quot;600&quot; /&gt;
+    &lt;p&gt;Figura 8: IPs reconhecidos pelo pDNS.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;No &lt;strong&gt;terceiro bloco&lt;/strong&gt;, e último contendo a tag &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Received&lt;/code&gt;, temos o primeiro servidor, o servidor que provavelmente gerou o email. O virustotal não tem nenhuma informação sobre a URL &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ip-134-38.dataclub.info&lt;/code&gt;, porém temos informações sobre o IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;84.38.134.38&lt;/code&gt;. O servidor está na Latvia, porém nenhum vendor sinalizou o IP nem como malicioso nem como não malicioso, o que é estranho.&lt;/p&gt;
+
+&lt;div style=&quot;font-family: &apos;Courier New&apos;;&quot;&gt;
+  &lt;mark style=&quot;background-color: rgb(211, 228, 59);&quot;&gt;Received: from ip-134-38.dataclub.info (unknown [84.38.134.38])
+  by mail.corridorconstructioniowa.cam (Postfix) with ESMTPSA id 154A88D745&lt;/mark&gt;
+  for &amp;lt;ceo@msolutions.com&amp;gt;; Fri, 25 Apr 2025 14:02:02 +0000 (UTC)
+&lt;/div&gt;
+
+&lt;p&gt;Também temos estas informações na aba &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DETAILS&lt;/code&gt; do &lt;strong&gt;Virus Total&lt;/strong&gt;, associadas ao IP:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;  role: DATCLUB SIA 
+  address: Kraslavas iela 14 - 2 
+  address: LV1003 
+  address: Riga, Latvia 
+  phone: +371 60-00-77-98 
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Uma breve pesquisa OSINT usando google maps nos retorna o seguinte:&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura9.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura9.png&quot; width=&quot;600&quot; /&gt;
+    &lt;p&gt;Figura 9: IPs reconhecidos pelo pDNS.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Lembrando que não é possível dar certeza do endereço do servidor, pois o atacante poderia estar usando uma VPN, Tor, etc.&lt;/p&gt;
+
+&lt;p&gt;Ainda sobre o IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;84.38.134.38&lt;/code&gt;, temos uma informação importante: foram detectados mais de 10 arquivos incorporando este IP. Na aba &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELATIONS&lt;/code&gt; do site virustotal temos 23 arquivos que fazem referência ao IP, sempre relacionados a arquivos de email, como mostra a imagem abaixo.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura10.png&quot; data-echo=&quot;/assets/images/figura10.png&quot; width=&quot;600&quot; alt=&quot;Figura 10: Relações de arquivos incorporando o IP 84.38.134.38&quot; /&gt;
+    &lt;p&gt;Figura 10: Arquivos que referenciam o IP (pDNS).&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Todos os arquivos estão relacionados à detecção de trojan. Infelizmente não podemos ter certeza de qual trojan estaria sendo usado, pois as flags abaixo são generalistas, são flags levantadas quando um arquivo possui um comportamento parecido a um trojan. Também não podemos inferir que algum malware está associado ao link do e-mail.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura11.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura11.png&quot; width=&quot;600&quot; /&gt;
+    &lt;p&gt;Figura 11: Detecções de trojan.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;52-caminho-de-retorno---return-path&quot;&gt;5.2 Caminho de Retorno - &lt;em&gt;Return-path&lt;/em&gt;&lt;/h2&gt;
+
+&lt;p&gt;O caminho de retorno (&lt;em&gt;Return-path&lt;/em&gt;) é o endereço usado para enviar o email. Podemos vê-lo no &lt;strong&gt;primeiro bloco&lt;/strong&gt; do source code, em verde.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;div style=&quot;font-family: &apos;Courier New&apos;;&quot;&gt;
+  &lt;p&gt;X-Mozilla-Status: 0001&lt;br /&gt;
+  X-Mozilla-Status2: 00000000&lt;br /&gt;
+  &lt;mark style=&quot;background-color: rgb(97, 203, 116);&quot;&gt;Return-Path: &amp;lt; hr@corridorconstructioniowa.cam&amp;gt;&lt;/mark&gt;&lt;br /&gt;
+  Delivered-To: ceo@msolutions.com&lt;br /&gt;
+  Received: from cpanel-003-fra.hostingww.com&lt;br /&gt;
+    by cpanel-003-fra.hostingww.com with LMTP&lt;br /&gt;
+    id EGKZEk+WC2jNvzYA2p0M4Q&lt;br /&gt;
+    &lt;mark style=&quot;background-color: rgb(97, 203, 116);&quot;&gt;(envelope-from &amp;lt; hr@corridorconstructioniowa.cam&amp;gt;)&lt;/mark&gt;&lt;br /&gt;
+    for &amp;lt; ceo@msolutions.com&amp;gt;; Fri, 25 Apr 2025 14:03:59 +0000 &lt;br /&gt;
+  Return-path: &amp;lt; hr@corridorconstructioniowa.cam&amp;gt;&lt;br /&gt;
+  Envelope-to: ceo@msolutions.com&lt;br /&gt;
+  Delivery-date: Fri, 25 Apr 2025 14:03:59 +0000&lt;br /&gt;&lt;/p&gt;
+  &lt;div&gt;
+    &lt;hr /&gt;
+
+    &lt;p&gt;O e-mail &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hr@corridorconstructioniowa.cam&lt;/code&gt; pode até existir, mas o site &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corridorconstructioniowa.cam&lt;/code&gt; não. O interessante é que a empresa existe e é legítima, mas parece que sofreu um TLD-squatting e estão usando o domínio de forma maliciosa.&lt;/p&gt;
+
+    &lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura12.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura12.png&quot; width=&quot;600&quot; height=&quot;auto&quot; /&gt;
+    &lt;p&gt;Figura 12: Empresa legítima.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Tue, 08 Jul 2025 00:00:00 +0200</pubDate>
+        <link>http://localhost:4000/CTI-report-2/</link>
+        <guid isPermaLink="true">http://localhost:4000/CTI-report-2/</guid>
+        
+        
+        <category>Virus Total</category>
+        
+        <category>automação</category>
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Script básico de automação de busca de IP no Virus Total</title>
+        <description>&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+
+&lt;p&gt;Após minhas aventuras pela CTI e suas ferramentas, descobri que o Virus Total possui uma API e que eu poderia usá-la para automaizar minhas buscas e torná-las mais rápidas e fáceis. Bem, ao final a busca realmente se tornou mais rápida e fácil, mas desenvolver a solução não foi tão fácil assim.&lt;/p&gt;
 
 &lt;p&gt;Como já adiantei, resolvi desenvolver um script para automatizar minhas buscas no &lt;strong&gt;Virus Total&lt;/strong&gt;. Primeiramente pensei em usar &lt;em&gt;bash&lt;/em&gt;, mas como tive pouco contato cheguei à conclusão que talvez eu fosse complicar (sem necessidade) um problema fácil de solucionar. Depois, fiquei entre usar &lt;em&gt;JavaScript&lt;/em&gt;, o qual usei por alguns anos como desenvolvedora front-end, e &lt;em&gt;Python&lt;/em&gt;, o qual usei bastante em um mestrado em Ciências da Computação que nem cheguei a terminar.&lt;/p&gt;
 
-&lt;p&gt;Acabei decidindo em usar &lt;em&gt;Python&lt;/em&gt;, pois acho uma linguagem “acessível” e organizada, além de ser um pouco mais &lt;em&gt;user friendly&lt;/em&gt;. A verdade é que estou enferrujadíssima na programação e eu queria uma solução rápida, já que meu foco não é programar e sim usar a programação como uma ferramenta a mais (não uma complicação a mais).&lt;/p&gt;
+&lt;p&gt;Acabei decidindo em usar &lt;em&gt;Python&lt;/em&gt;, pois acho uma linguagem “acessível” e organizada, além de ser um pouco mais &lt;em&gt;user friendly&lt;/em&gt;. A verdade é que estou enferrujadíssima na programação e eu queria uma solução rápida, já que meu foco não é programar e sim usar a programação como uma ferramenta (não uma complicação a mais).&lt;/p&gt;
 
 &lt;p&gt;Aqui contarei um pouco da minha saga com esse processo de &lt;em&gt;reconexão&lt;/em&gt; com a programação e os conhecimentos que (re)adquiri.&lt;/p&gt;
 
-&lt;p&gt;Meu racicínio foi primeiro buscar quais resultador a API traria numa consulta de IP.&lt;/p&gt;
+&lt;h2 id=&quot;metodologia&quot;&gt;Metodologia&lt;/h2&gt;
+
+&lt;h3 id=&quot;seleção-dos-termos-da-consulta-de-ip&quot;&gt;Seleção dos termos da consulta de IP&lt;/h3&gt;
+
+&lt;p&gt;Primeiro, busquei pela API e quais &lt;a href=&quot;https://docs.virustotal.com/reference/ip-object&quot;&gt;resultados&lt;/a&gt; ela traria numa consulta de IP. Escolhi as que me pareciam mais importantes. Na tabela abaixo estão cada termo selecionado e justificativa.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Termos&lt;/th&gt;
+      &lt;th&gt;Justificativa&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;jarm&lt;/td&gt;
+      &lt;td&gt;Identificação do fingerprint do TLS usado, ajuda a detectar servidores clonados, hots maliciosos, etc.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;as_owner&lt;/td&gt;
+      &lt;td&gt;Nome do dono do sistema autônomo (ASN) responsável pelo IP, como um provedor por exemplo.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;country&lt;/td&gt;
+      &lt;td&gt;Geolocalização do IP. Nem sempre é confiável por conta do uso de proxies e VPN.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;last_https_certificate_date&lt;/td&gt;
+      &lt;td&gt;Timestamp do último certificado HTTPS do IP. É útil para verificar se o servidor está atualizado, ativo ou se o certificado acabou de ser modificado para mascarar atividades maliciosas.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;last_analysis_stats&lt;/td&gt;
+      &lt;td&gt;Estatísticas do último scan no Virus Total. As engines marcam como: &lt;br /&gt; - harmless &lt;br /&gt; - malicious &lt;br /&gt; - suspicious &lt;br /&gt; - undetected&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;reputation&lt;/td&gt;
+      &lt;td&gt;Score geral do IP.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;total_votes&lt;/td&gt;
+      &lt;td&gt;Votos contabilizados pelo feedback da comunidade.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;whois&lt;/td&gt;
+      &lt;td&gt;Resultados do WHOIS&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;formatação-do-retorno&quot;&gt;Formatação do retorno&lt;/h3&gt;
+
+&lt;p&gt;O &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; retornado pela busca na API é um objeto, então é necessário tratar estes dados. Além de tratar também o timestamp em &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;last_https_certificate_date&lt;/code&gt;. No caso do timestamp, também fiz um tratamento de erro caso não fosse encontrado nenhum timestamp no retorno.&lt;/p&gt;
+
+&lt;h3 id=&quot;problemas-encontrados-no-whois&quot;&gt;Problemas encontrados no WHOIS&lt;/h3&gt;
+
+&lt;p&gt;Percebi que algumas vezes o WHOIS vinha completo, e outra vinha apenas com uma ID. Foi então que percebi que precisava de uma função assíncrona para poder retornar os dados completos dessa busca. Também resolvi buscar por termos específicos no WHOIS, tendo em vista tudo o que ele pode retornar em uma consulta.&lt;/p&gt;
+
+&lt;p&gt;Continuei com problemas na busca do WHOIS, a função async não foi suficiente, e os resultados do script vinham inconsistentes, até que encontrei um padrão: na primeira consulta, os dados de WHOIS não estão prontos, obtendo apenas o timestamp da busca, mas na consulta seguinte a consulta WHOIS da API já está preparada. Não consegui ultrapassar esse problema, mesmo colocando 3 tentativas de consulta no código, a solução foi &lt;em&gt;Rodar o script uma segunda vez, caso a primeira consulta não retorne WHOIS&lt;/em&gt;, mas funciona.&lt;/p&gt;
+
+&lt;h2 id=&quot;resultados&quot;&gt;Resultados&lt;/h2&gt;
+
+&lt;h3 id=&quot;script&quot;&gt;Script&lt;/h3&gt;
+
+&lt;p&gt;Aqui o script: &lt;a href=&quot;https://github.com/e-v-s/VT-script&quot;&gt;https://github.com/e-v-s/VT-script&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;resultado-da-primeira-consulta---sem-whois-&quot;&gt;Resultado da primeira consulta - sem WHOIS :(&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;==================================================
+Resultados da Consulta no VirusTotal
+==================================================
+IP consultado: 8.8.8.8
+--------------------------------------------------
+Buscando informações básicas do IP...
+JARM: 29d3fd00029d29d00042d43d00041d598ac0c1012db967bb1ad0ff2491b3ae
+
+AS_OWNER: GOOGLE
+
+COUNTRY:
+
+LAST_HTTPS_CERTIFICATE_DATE: 2025-07-06 05:33:21
+
+LAST_ANALYSIS_STATS:
+  • malicious: 0
+  • suspicious: 0
+  • undetected: 32
+  • harmless: 62
+  • timeout: 0
+
+REPUTATION: 549
+
+TOTAL_VOTES:
+  • harmless: 229
+  • malicious: 44
+
+WHOIS:
+  Aguardando processamento dos dados de WHOIS...
+  Não existem campos importantes de WHOIS
+
+==================================================
+Consulta finalizada
+==================================================
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;resultado-da-segunda-consulta---com-whois-&quot;&gt;Resultado da segunda consulta - com WHOIS :)&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;==================================================
+Resultados da Consulta no VirusTotal
+==================================================
+IP consultado: 8.8.8.8
+--------------------------------------------------
+Buscando informações básicas do IP...
+JARM: 29d3fd00029d29d00042d43d00041d598ac0c1012db967bb1ad0ff2491b3ae
+
+AS_OWNER: GOOGLE
+
+COUNTRY: US
+
+LAST_HTTPS_CERTIFICATE_DATE: 2025-07-06 05:33:21
+
+LAST_ANALYSIS_STATS:
+  • malicious: 0
+  • suspicious: 0
+  • undetected: 32
+  • harmless: 62
+  • timeout: 0
+
+REPUTATION: 549
+
+TOTAL_VOTES:
+  • harmless: 229
+  • malicious: 44
+
+WHOIS:
+  • netrange: 8.8.8.0 - 8.8.8.255
+  • netname: GOGL
+  • organization: Google LLC (GOGL)
+  • updated: 2019-10-31
+  • orgname: Google LLC
+  • orgid: GOGL
+  • country: US
+  • orgabusehandle: ABUSE5250-ARIN
+  • orgabusename: Abuse
+  • orgabusephone: +1-650-253-0000
+  • orgabuseemail: network-abuse@google.com
+  • orgabuseref: https://rdap.arin.net/registry/entity/ABUSE5250-ARIN
+  • orgtechhandle: ZG39-ARIN
+  • orgtechname: Google LLC
+  • orgtechphone: +1-650-253-0000
+  • orgtechemail: arin-contact@google.com
+  • orgtechref: https://rdap.arin.net/registry/entity/ZG39-ARIN
+
+==================================================
+Consulta finalizada
+==================================================
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusão&quot;&gt;Conclusão&lt;/h2&gt;
+
+&lt;p&gt;Bem, a consulta atende às minhas necessidades. Apesar de ter que rodar o script uma segunda vez para obter os dados do WHOIS (em alguns casos), acredito que o script está ok, funciona.&lt;/p&gt;
+
+&lt;p&gt;Pretendo agora implementar uma solução de URL com a API do URLscan.io e também usar a API da Falcon sandbox para analisar links maliciosos.&lt;/p&gt;
 </description>
         <pubDate>Sat, 05 Jul 2025 00:00:00 +0200</pubDate>
         <link>http://localhost:4000/Virustotal-script/</link>
@@ -36,7 +549,9 @@
     
       <item>
         <title>CIT aplicada à análise de phishing corporativo - Parte 1</title>
-        <description>&lt;h2 id=&quot;nesta-primeira-parte-teremos&quot;&gt;Nesta primeira parte, teremos:&lt;/h2&gt;
+        <description>&lt;h1 id=&quot;parte-1&quot;&gt;Parte 1&lt;/h1&gt;
+
+&lt;p&gt;Neste post irei abordar &lt;em&gt;Introdução&lt;/em&gt;, &lt;em&gt;Contexto&lt;/em&gt; e &lt;em&gt;Objetivos&lt;/em&gt; do projeto. O texto produzido é de &lt;em&gt;report&lt;/em&gt; gerado para o cliente.&lt;/p&gt;
 
 &lt;h3 id=&quot;1-introdução&quot;&gt;&lt;a href=&quot;#1-introdução&quot;&gt;1 Introdução&lt;/a&gt;&lt;/h3&gt;
 &lt;h3 id=&quot;2-contexto&quot;&gt;&lt;a href=&quot;#2-contexto&quot;&gt;2 Contexto&lt;/a&gt;&lt;/h3&gt;
@@ -88,7 +603,7 @@ de &lt;em&gt;phishing&lt;/em&gt; resultantes da análise do design do e-mail e
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;A partir do relatório gerado, estratégias de mitigação serão expostas para os possíveis malwares associados ao e-mail, como:&lt;/p&gt;
+&lt;p&gt;A partir do relatório gerado, estratégias de mitigação serão expostas para os possíveis problemas associados ao e-mail, como:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;

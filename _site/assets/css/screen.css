@@ -12,13 +12,30 @@ License: https://www.wowthemes.net/freebies-license/
 }
 
 a {
-    color: #00ab6b;
+    color: #ff6699;
     transition: all 0.2s;
 }
 
 a:hover {
-    color: #038252;
+    color: #ff6699;
     text-decoration: none;
+}
+
+/* Blog and About links in navbar */
+.mediumnavigation .nav-link {
+    color: #222 !important;
+}
+.mediumnavigation .nav-link:hover {
+    color: #ff6699 !important;
+}
+
+/* Site title (Évora Leite) */
+.mainheading h1.sitetitle, .mainheading h1.sitetitle a {
+    color: #222 !important;
+    font-family: Righteous;
+}
+.mainheading h1.sitetitle a:hover {
+    color: #ff6699 !important;
 }
 
 pre {
@@ -304,8 +321,12 @@ span.post-read-more a:hover {
     margin-right: 5px;
 }
 
-.mainheading h1.sitetitle {
+.mainheading h1.sitetitle, .mainheading h1.sitetitle a {
     font-family: Righteous;
+}
+
+.mainheading h1.sitetitle a:hover {
+    color: #ff6699 !important;
 }
 
 .mainheading h1.posttitle {
@@ -898,4 +919,20 @@ iframe {
 .lazyimg[data-srcset] {
     opacity: 0;
     transition: opacity .25s;
+}
+
+/* Image sizing for blog posts */
+.article-post img[src*="figura1"],
+.article-post img[src*="figura2"],
+.article-post img[src*="figura4"] {
+  width: 200px !important;
+  height: auto;
+}
+
+.article-post img[src*="figura3"],
+.article-post img[src*="figura5"],
+.article-post img[src*="figura6"],
+.article-post img[src*="figura7"] {
+  width: 600px !important;
+  height: auto;
 }
