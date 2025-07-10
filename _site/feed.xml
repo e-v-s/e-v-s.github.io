@@ -5,8 +5,8 @@
     <description>Jr. Cybersec Analyst | CIT | Blue Team | Computer Network</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 10 Jul 2025 01:01:32 +0200</pubDate>
-    <lastBuildDate>Thu, 10 Jul 2025 01:01:32 +0200</lastBuildDate>
+    <pubDate>Thu, 10 Jul 2025 12:53:16 +0200</pubDate>
+    <lastBuildDate>Thu, 10 Jul 2025 12:53:16 +0200</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -69,11 +69,8 @@
 
 &lt;div style=&quot;display: flex;&quot;&gt;
   &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
-    &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&amp;lt;img src=&quot;/assets/images/figura7.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura7.png&quot; width=&quot;200&quot;&amp;gt;
-&amp;lt;p&amp;gt;Figura 7: Resquest POST.&amp;lt;/p&amp;gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+    &lt;img src=&quot;/assets/images/figura7.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura7.png&quot; width=&quot;200&quot; /&gt;
+    &lt;p&gt;Figura 7: Resquest POST.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -208,7 +205,7 @@ pode ter ocorrido, já que os IPs não são uma fonte confiável de &lt;em&gt;in
 &lt;div style=&quot;display: flex;&quot;&gt;
   &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
     &lt;img src=&quot;/assets/images/figura9.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura9.png&quot; width=&quot;600&quot; /&gt;
-    &lt;p&gt;Figura 9: IPs reconhecidos pelo pDNS.&lt;/p&gt;
+    &lt;p&gt;Figura 9: Busca OSINT do local.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -216,29 +213,14 @@ pode ter ocorrido, já que os IPs não são uma fonte confiável de &lt;em&gt;in
 
 &lt;p&gt;Ainda sobre o IP &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;84.38.134.38&lt;/code&gt;, temos uma informação importante: foram detectados mais de 10 arquivos incorporando este IP. Na aba &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RELATIONS&lt;/code&gt; do site virustotal temos 23 arquivos que fazem referência ao IP, sempre relacionados a arquivos de email, como mostra a imagem abaixo.&lt;/p&gt;
 
-&lt;div style=&quot;display: flex;&quot;&gt;
-  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
-    &lt;img src=&quot;/assets/images/figura10.png&quot; data-echo=&quot;/assets/images/figura10.png&quot; width=&quot;600&quot; alt=&quot;Figura 10: Relações de arquivos incorporando o IP 84.38.134.38&quot; /&gt;
-    &lt;p&gt;Figura 10: Arquivos que referenciam o IP (pDNS).&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
 &lt;p&gt;Todos os arquivos estão relacionados à detecção de trojan. Infelizmente não podemos ter certeza de qual trojan estaria sendo usado, pois as flags abaixo são generalistas, são flags levantadas quando um arquivo possui um comportamento parecido a um trojan. Também não podemos inferir que algum malware está associado ao link do e-mail.&lt;/p&gt;
-
-&lt;div style=&quot;display: flex;&quot;&gt;
-  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
-    &lt;img src=&quot;/assets/images/figura11.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura11.png&quot; width=&quot;600&quot; /&gt;
-    &lt;p&gt;Figura 11: Detecções de trojan.&lt;/p&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
 
 &lt;h2 id=&quot;52-caminho-de-retorno---return-path&quot;&gt;5.2 Caminho de Retorno - &lt;em&gt;Return-path&lt;/em&gt;&lt;/h2&gt;
 
-&lt;p&gt;O caminho de retorno (&lt;em&gt;Return-path&lt;/em&gt;) é o endereço usado para enviar o email. Podemos vê-lo no &lt;strong&gt;primeiro bloco&lt;/strong&gt; do source code, em verde.&lt;/p&gt;
-
-&lt;hr /&gt;
+&lt;p&gt;O caminho de retorno (&lt;em&gt;Return-path&lt;/em&gt;) é o endereço usado para enviar o email. Podemos vê-lo no &lt;strong&gt;primeiro bloco&lt;/strong&gt; do source code, em verde. 
+___&lt;/p&gt;
 &lt;div style=&quot;font-family: &apos;Courier New&apos;;&quot;&gt;
-  &lt;p&gt;X-Mozilla-Status: 0001&lt;br /&gt;
+  X-Mozilla-Status: 0001&lt;br /&gt;
   X-Mozilla-Status2: 00000000&lt;br /&gt;
   &lt;mark style=&quot;background-color: rgb(97, 203, 116);&quot;&gt;Return-Path: &amp;lt; hr@corridorconstructioniowa.cam&amp;gt;&lt;/mark&gt;&lt;br /&gt;
   Delivered-To: ceo@msolutions.com&lt;br /&gt;
@@ -249,18 +231,16 @@ pode ter ocorrido, já que os IPs não são uma fonte confiável de &lt;em&gt;in
     for &amp;lt; ceo@msolutions.com&amp;gt;; Fri, 25 Apr 2025 14:03:59 +0000 &lt;br /&gt;
   Return-path: &amp;lt; hr@corridorconstructioniowa.cam&amp;gt;&lt;br /&gt;
   Envelope-to: ceo@msolutions.com&lt;br /&gt;
-  Delivery-date: Fri, 25 Apr 2025 14:03:59 +0000&lt;br /&gt;&lt;/p&gt;
-  &lt;div&gt;
-    &lt;hr /&gt;
-
-    &lt;p&gt;O e-mail &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hr@corridorconstructioniowa.cam&lt;/code&gt; pode até existir, mas o site &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corridorconstructioniowa.cam&lt;/code&gt; não. O interessante é que a empresa existe e é legítima, mas parece que sofreu um TLD-squatting e estão usando o domínio de forma maliciosa.&lt;/p&gt;
-
-    &lt;div style=&quot;display: flex;&quot;&gt;
-  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
-    &lt;img src=&quot;/assets/images/figura12.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura12.png&quot; width=&quot;600&quot; height=&quot;auto&quot; /&gt;
-    &lt;p&gt;Figura 12: Empresa legítima.&lt;/p&gt;
-  &lt;/div&gt;
+  Delivery-date: Fri, 25 Apr 2025 14:03:59 +0000&lt;br /&gt;
 &lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;O e-mail &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hr@corridorconstructioniowa.cam&lt;/code&gt; pode até existir, mas o site &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;corridorconstructioniowa.cam&lt;/code&gt; não. O interessante é que a empresa existe e é legítima, mas parece que sofreu um TLD-squatting e estão usando o domínio de forma maliciosa.&lt;/p&gt;
+
+&lt;div style=&quot;display: flex;&quot;&gt;
+  &lt;div style=&quot;justify-items: center; margin: 50px;&quot;&gt;
+    &lt;img src=&quot;/assets/images/figura12.png&quot; alt=&quot;&quot; data-echo=&quot;/assets/images/figura12.png&quot; style=&quot;width: 400px !important;&quot; /&gt;
+    &lt;p&gt;Figura 12: Empresa legítima.&lt;/p&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 </description>
