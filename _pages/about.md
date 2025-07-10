@@ -7,23 +7,24 @@ comments: true
 <div class="row justify-content-between">
 <div class="col-md-8 pr-5">
 
-<h2>About Me</h2>
+  <h2>Sobre mim</h2>
 
-<p>Hello! I'm Évora Leite, a Junior Cybersecurity Analyst passionate about protecting digital assets and understanding cyber threats. I specialize in Cyber Threat Intelligence (CTI), Blue Team operations, and Computer Network Defense.</p>
+  <p>Olá! Eu sou Évora Leite, Analista Júnior de Cibersegurança apaixonada por resolver problemas e CIT. Estou me especializando em Inteligência de Ameaças Cibernéticas (CTI), operações de Blue Team e Defesa de Rede de Computadores.</p>
 
-<h3>My Expertise</h3>
-<ul>
-<li><strong>Cyber Threat Intelligence (CTI):</strong> Analyzing threat actors, campaigns, and indicators of compromise</li>
-<li><strong>Blue Team Operations:</strong> Defensive security, incident response, and threat hunting</li>
-<li><strong>Network Security:</strong> Computer network defense and monitoring</li>
-<li><strong>Phishing Analysis:</strong> Email security and social engineering detection</li>
-<li><strong>Security Tools:</strong> VirusTotal, Hybrid-Analysis, MITRE ATT&CK, BurpSuite</li>
-</ul>
+  <h3>Minha Especialização</h3>
+  <ul>
+    <li><strong>Inteligência de Ameaças Cibernéticas (CTI):</strong> Análise de atores de ameaça, campanhas e indicadores de comprometimento</li>
+    <li><strong>Operações de Blue Team:</strong>
+    Segurança defensiva, resposta a incidentes e caça a ameaças</li>
+    <li><strong>Segurança de Rede:</strong> Defesa e monitoramento de redes de computadores</li>
+    <li><strong>Análise de Phishing:</strong> Segurança de e-mail e detecção de engenharia social</li>
+    <li><strong>Ferramentas de Segurança:</strong> VirusTotal, Hybrid-Analysis, MITRE ATT&CK, BurpSuite</li>
+  </ul>
 
-<h3>Current Focus</h3>
-<p>I'm currently working on developing automated threat intelligence workflows and improving organizational security postures through comprehensive phishing analysis and mitigation strategies.</p>
+  <h3>Foco Atual</h3>
+  <p>No momento, estou desenvolvendo fluxos de trabalho automatizados de inteligência de ameaças e aprimorando as posturas de segurança organizacional por meio de análises abrangentes de phishing e estratégias de mitigação.</p>
 
-<p>This blog serves as a platform to share my research, methodologies, and insights from the cybersecurity field. I believe in knowledge sharing and contributing to the security community.</p>
+  <p>Este blog serve como plataforma para compartilhar minhas pesquisas, metodologias e insights da área de cibersegurança. Acredito no compartilhamento de conhecimento e em contribuir para a comunidade de segurança.</p>
 
 </div>
 
